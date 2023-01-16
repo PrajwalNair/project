@@ -8,14 +8,21 @@ import com.xworkz.mall.dto.AdminDTO;
 public interface MallService {
 //	boolean validateAndSave(AdminDTO dto);
 
-	AdminDTO findByNameAndPassword(String name, String password, AdminDTO dto);
+	AdminDTO findByNameAndPassword(String name, String password);
 
-	void updateNoOfWrongAttempts(String name, int noOfAttempts);
+//	void updateNoOfWrongAttemptsByName(String name, int noOfAttempts);
 
-	default boolean sendMail(String email) {
+	default boolean sendMail(String email, String password) {
 		return true;
 	}
 
 	AdminDTO findByName(String name);
+
+	AdminDTO updatePasswordByGeneratedPassword(String generatedPassword, String password);
+	
+	AdminDTO findByMallName(String mallName);
+	
+	AdminDTO updateAcountUnlockByName(String name,String status);
+	
 
 }

@@ -8,17 +8,27 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<title>Home</title>
+<title>Reset password</title>
 <style type="text/css">
-
-body{
-background-image: url("https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
-background-repeat: no-repeat;
-background-size: 100%;
-
+.forgetpassword {
+	padding-left: 30%;
+	padding-top: 2%;
+	padding-right: 40%;
+	padding-bottom: 2%;
+	background-size: 100%;
 }
-
 </style>
+
+<!-- <script type="text/javascript">
+	function myFunction() {
+		var x = document.getElementById("exampleInputPassword1");
+		if (x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+	}
+</script> -->
 </head>
 <body>
 
@@ -30,16 +40,35 @@ background-size: 100%;
 			style="padding-left: 1.8%; font-weight: bolder; font-size: xx-large;; font-variant: small-caps; font-style: italic;">Mall</a>
 
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			
-		</div>
-
-		<div>
-			<a href="#" style="color: white;">AboutUs</a>
-			<a href="#" style="color: white;">Contact</a>
-			<a class="btn btn-success" href="Admin.jsp" role="button">Admin
-				Login</a>
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link"
+					href="index.jsp">Home <span class="sr-only">(current)</span>
+				</a></li>
+			</ul>
 		</div>
 	</nav>
+	<h1 style="text-align: center;font-size: x-large;font-weight: bolder;color: red;">Reset Password</h1>
+	<p style="color: green;">${msg}</p>
+	<p style="color: green;">${error}</p>
+	<div class="forgetpassword">
+		<form action="reset" method="post">
+<div>
+			<label class="form-label" for="form3Example4" style="font-size:large; font-style: normal;font-weight: normal;">Mall Name</label>
+			<select name="mallName">
+				<option selected>Choose...</option>
+				<option value="LU LU">LU LU</option>
+				<option value="Orion">Orion</option>
+				<option value="Vega City">Vega City</option>
+				<option value="Mantri">Mantri</option>
+				<option value="Central">Central</option>
+				<option value="Urban Oasis">Urban Oasis</option>
+			</select>
+</div>
+
+
+			<button type="submit" class="btn btn-primary">send</button>
+		</form>
+	</div>
 
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

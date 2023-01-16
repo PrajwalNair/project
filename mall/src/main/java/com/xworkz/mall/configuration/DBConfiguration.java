@@ -21,7 +21,6 @@ public class DBConfiguration {
 	public DBConfiguration() {
 		System.out.println(getClass().getSimpleName());
 	}
-
 	@Bean
 	LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean(DataSource source) {
 		LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
@@ -30,7 +29,6 @@ public class DBConfiguration {
 		bean.setDataSource(source);
 		return bean;
 	}
-
 	@Bean
 	public DataSource source() {
 		HikariConfig config = new HikariConfig();

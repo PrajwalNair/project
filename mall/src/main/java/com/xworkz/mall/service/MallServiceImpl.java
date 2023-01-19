@@ -24,7 +24,7 @@ import com.xworkz.mall.repository.MallRepository;
 public class MallServiceImpl implements MallService {
 	@Autowired
 	private MallRepository repository;
-	int loginCount = 0;
+	
 	int countFirstLogin = 0;
 
 	@Override
@@ -33,6 +33,7 @@ public class MallServiceImpl implements MallService {
 		AdminDTO findByNameAndPassword = repository.findByNameAndPassword(name, encryption(password, 8));
 		
 		if (findByNameAndPassword != null) {
+			int loginCount = findByNameAndPassword.getLoginCount();
 			loginCount++;
 			findByNameAndPassword.setLoginCount(loginCount);
 			repository.updateLoginCountByName(name, findByNameAndPassword.getLoginCount());
@@ -49,8 +50,10 @@ public class MallServiceImpl implements MallService {
 				String mallEmail = findByNameAndPassword.getMallEmail();
 				String generatedPassword = findByNameAndPassword.getGeneratedPassword();
 				sendMail(mallEmail, generatedPassword);
+				System.out.println("mail is sent for first time password");
 				return findByNameAndPassword;
 			}
+			System.out.println("login is successfull");
 			return findByNameAndPassword;
 		} else {
 			int count1 = 0;

@@ -11,8 +11,8 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<title>forget password</title>
-
+<title>Change-password</title>
+<link rel="icon" type="image/x-icon" href="https://www.freeiconspng.com/thumbs/login-icon/login-key-icon-lock-locked-login-15.png">
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script
@@ -44,6 +44,16 @@
 .pass_show .ptxt:hover {
 	color: #333333;
 }
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height:7%;
+	background-color: #34495E;
+	color: black;
+	text-align: center;
+}
 </style>
 
 <script type="text/javascript">
@@ -65,18 +75,14 @@
 <body>
 
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #34495E;width: 100%;">
 		<img alt=""
-			src="https://e7.pngegg.com/pngimages/483/254/png-clipart-creative-mall-public-toilet-logo-furniture-free-logo-design-template.png"
-			width="50" height="50"> <a class="navbar-brand" href="#"
-			style="padding-left: 1.8%; font-weight: bolder; font-size: xx-large;; font-variant: small-caps; font-style: italic;">Mall</a>
+			src="https://i0.wp.com/myjamnagar.com/wp-content/uploads/2020/09/shopping-online-e1600266149435.jpg?ssl=1"
+			width="50" height="35"> <a class="navbar-brand" href="#"
+			style="padding-left: 1.8%; font-weight: bolder; font-size: xx-large;">Mall</a>
 
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link"
-					href="index.jsp">Home <span class="sr-only">(current)</span>
-				</a></li>
-			</ul>
+		<div style="padding-left: 83%;" >
+			<a href="index.jsp" style="color: white;font-size: large;">Home</a>
 		</div>
 	</nav>
 	<%-- <p style="color: green;">${msg}</p>
@@ -150,5 +156,12 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+		
+		<footer>
+		<p style="font-size:small; ;padding-top: 0.7%;color: white;">
+			© Created By : Prajwal Nair &nbsp; <a
+				href="#" style="font-size: small;color: blue;"><u> prajwalnair.xworkz@gmail.com</u></a>
+		</p>
+	</footer>
 </body>
 </html>

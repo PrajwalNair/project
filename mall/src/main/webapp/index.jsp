@@ -9,37 +9,47 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <title>Home</title>
+<link rel="icon" type="image/x-icon" href="https://www.clipartmax.com/png/middle/418-4189255_favicon-icon-sr-family-icon-png-pink.png">
 <style type="text/css">
-
-body{
-background-image: url("https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80");
-background-repeat: no-repeat;
-background-size: 100%;
-
+body {
+	background-image:
+		url("https://cdn.prowebdesigns.co.uk/media/2019/02/19173724/professional-web-designs-cover.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height:7%;
+	background-color: #34495E;
+	color: black;
+	text-align: center;
+}
 </style>
 </head>
 <body>
 
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-dark"
+		style="background-color: #34495E;">
 		<img alt=""
-			src="https://e7.pngegg.com/pngimages/483/254/png-clipart-creative-mall-public-toilet-logo-furniture-free-logo-design-template.png"
-			width="50" height="50"> <a class="navbar-brand" href="#"
-			style="padding-left: 1.8%; font-weight: bolder; font-size: xx-large;; font-variant: small-caps; font-style: italic;">Mall</a>
+			src="https://i0.wp.com/myjamnagar.com/wp-content/uploads/2020/09/shopping-online-e1600266149435.jpg?ssl=1"
+			width="50" height="40"> <a class="navbar-brand" href="#"
+			style="padding-left: 1.8%; font-weight: bolder; font-size: xx-large;">Mall</a>
 
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			
-		</div>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown"></div>
 
 		<div>
-			<a href="#" style="color: white;">AboutUs</a>
-			<a href="#" style="color: white;">Contact</a>
-			<a class="btn btn-success" href="Admin.jsp" role="button">Admin
-				Login</a>
+			<a href="#" style="color: white;">AboutUs</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="#"
+				style="color: white;">Contact</a> &nbsp;&nbsp;&nbsp;&nbsp; <a 
+				href="Admin.jsp" style="color: white;">AdminLogin</a>
 		</div>
 	</nav>
+
+
 
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -53,5 +63,15 @@ background-size: 100%;
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+
+<footer>
+		<p style="font-size: small;padding-top: 0.7%;color: white;">
+			© Created By : Prajwal Nair &nbsp; <a
+				href="#" style="font-size: small;color: blue;"><u> prajwalnair.xworkz@gmail.com</u></a>
+		</p>
+	</footer>
+
+
 </body>
+
 </html>

@@ -8,41 +8,53 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<title>Reset password</title>
+<title>Admin-Success</title>
+<link rel="icon" type="image/x-icon" href="https://www.freeiconspng.com/thumbs/success-icon/success-icon-19.png">
 <style type="text/css">
 .forgetpassword {
 	padding-left: 35%;
-	padding-top: 7%;
+	padding-top: 4%;
 	padding-right: 20%;
 	padding-bottom: 2%;
 	background-size: 100%;
 }
+body {
+	/* background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%; */
+
+background-color: #D0D3D4;
+
+}
 </style>
 </head>
-<body style="background-color:buttonface;">
+<body>
 
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #34495E;">
 		<img alt=""
-			src="https://e7.pngegg.com/pngimages/483/254/png-clipart-creative-mall-public-toilet-logo-furniture-free-logo-design-template.png"
-			width="50" height="50"> <a class="navbar-brand" href="#"
-			style="padding-left: 1.8%; font-weight: bolder; font-size: xx-large;; font-variant: small-caps; font-style: italic;">Mall</a>
+			src="https://i0.wp.com/myjamnagar.com/wp-content/uploads/2020/09/shopping-online-e1600266149435.jpg?ssl=1"
+			width="50" height="35"> <a class="navbar-brand" href="#"
+			style="padding-left: 1.8%; font-weight: bolder; font-size: xx-large;">Mall</a>
 
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link"
-					href="index.jsp">Home <span class="sr-only">(current)</span>
-				</a></li>
-			</ul>
+		<div style="padding-left: 75%;" >
+			<a href="index.jsp" style="color: white;font-size: large;">Home</a>&nbsp;&nbsp;&nbsp;
+			<a href="Admin.jsp" style="color: white;font-size: large;">Admin</a>
 		</div>
 	</nav>
-	<p style="text-align: center;font-size: x-large;font-weight: bolder;">Mall Name  : ${dto.mallName}</p> 
-	<p style="text-align: center;font-size: x-large;font-weight: bolder;">Admin Name : ${dto.name}</p>
-	<div class="forgetpassword">
-		<a class="btn btn-success" href="Customer.jsp" role="button">Take Customer FeedBack</a>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
-		<a class="btn btn-success" href="SearchFeedBack.jsp" role="button">Search FeedBack</a>	
+			
+		
+	<marquee style="font-size: xx-large;color: black;" scrollamount="20" direction="right">Welcome</marquee>
+	<div style="padding-top: 3%;">
+	<p style="text-align: center;font-size: x-large;color: black;">Mall Name  : ${dto.mallName}</p> 
+	<p style="text-align: center;font-size: x-large;color: black;">Admin Name : ${dto.name}</p>
 	</div>
+	<div class="forgetpassword">
+		<a class="btn btn" href="Customer.jsp" role="button" style="background-color: #27AE60 ;color: white;">Take Customer FeedBack</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+		<a class="btn btn" href="SearchFeedBack.jsp" role="button" style="background-color: #27AE60 ;color: white;">Search FeedBack</a>	
+	</div>
+	
 
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

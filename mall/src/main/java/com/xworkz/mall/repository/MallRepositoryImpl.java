@@ -60,7 +60,7 @@ public class MallRepositoryImpl implements MallRepository {
 
 			int executeUpdate = query.executeUpdate();
 			transaction.commit();
-			System.out.println(executeUpdate);
+			System.out.println("no of wrong attempt is updated :"+executeUpdate);
 
 		} catch (PersistenceException e) {
 			transaction.rollback();
@@ -106,9 +106,9 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("nm", name);
 			query.setParameter("lg", loginStatus);
 			int executeUpdate = query.executeUpdate();
+			
+			System.out.println("first login is updated :"+executeUpdate);
 			transaction.commit();
-			System.out.println(executeUpdate);
-
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 		} finally {
@@ -128,7 +128,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("nm", name);
 			query.setParameter("al", accountLocked);
 			int executeUpdate = query.executeUpdate();	
-			System.out.println(executeUpdate);
+			System.out.println("Account locked is updated :"+executeUpdate);
 			transaction.commit();
 			
 		} catch (PersistenceException e) {
@@ -151,6 +151,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("gpas", generatedPassword);
 			int executeUpdate = query.executeUpdate();
 			transaction.commit();
+			System.out.println("Generated password is updated :"+executeUpdate);
 
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -172,7 +173,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("gs", generatedPassword);
 			int executeUpdate = query.executeUpdate();
 			transaction.commit();
-			System.out.println(executeUpdate);
+			System.out.println("Password is updated "+executeUpdate);
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 			transaction.rollback();
@@ -217,7 +218,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("mn", mallName);
 			query.setParameter("gp", generatedPassword);
 			int executeUpdate = query.executeUpdate();
-			System.out.println(executeUpdate);
+			System.out.println("generated password by mallName :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -237,7 +238,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("nm", name);
 			query.setParameter("lc", loginCount);
 			int executeUpdate = query.executeUpdate();
-			System.out.println(executeUpdate);
+			System.out.println("login count is updated by name :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -259,7 +260,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("ml", mallName);
 			query.setParameter("ti", time);
 			int executeUpdate = query.executeUpdate();
-			System.out.println(executeUpdate);
+			System.out.println("time is updated by mallName :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -280,7 +281,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("nm", mallName);
 			query.setParameter("st", status);
 			int executeUpdate = query.executeUpdate();
-			System.out.println(executeUpdate);
+			System.out.println("Account unlock is updated by name :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -301,7 +302,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("mn", mallName);
 			query.setParameter("no", noOfAttempts);
 			int executeUpdate = query.executeUpdate();
-			System.out.println(executeUpdate);
+			System.out.println("no of wrong attemptsis updated by mallName :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -345,7 +346,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("gp", generatedPassword);
 			query.setParameter("gpt", generatedPasswordTime);
 			int executeUpdate = query.executeUpdate();
-			System.out.println(executeUpdate);
+			System.out.println("generated password time is updated by generated password :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();

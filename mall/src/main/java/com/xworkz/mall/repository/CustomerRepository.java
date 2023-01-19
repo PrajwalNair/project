@@ -7,7 +7,13 @@ import com.xworkz.mall.dto.CustomerPersonalDetailsDTO;
 
 public interface CustomerRepository {
 	boolean save(CustomerPersonalDetailsDTO dto);
-	
-	CustomerPersonalDetailsDTO findByName(String name);
+
+//	boolean save(CustomerFeedBackDetailsDTO dto);
+
+	List<CustomerPersonalDetailsDTO> findByName(String name);
+
+	List<CustomerPersonalDetailsDTO> findByEmail(String email);
+
+	List<CustomerPersonalDetailsDTO> findByMobileNo(long mobileNo);
 
 }

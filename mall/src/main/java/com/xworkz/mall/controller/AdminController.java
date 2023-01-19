@@ -39,24 +39,25 @@ public class AdminController {
 				return "Admin";
 			}
 			return "Admin";
-		}
+		} 
 
-		if (findByNameAndPassword != null && findByName != null) {
-			if (findByNameAndPassword.getAccountLocked().equals("unlocked")
-					&& findByNameAndPassword.getLoginCount() > 1) {
-				System.out.println("account is unlocked");
-				model.addAttribute("msg", "credentials are matching");
-				model.addAttribute("dto", findByNameAndPassword);
-				return "AdminSuccess";
-			}
-			if (findByNameAndPassword.getLoginCount() <= 1) {
-				System.out.println("welcome to our page please change your password");
-				model.addAttribute("msg1", "Congratulations you have logged in please change your password");
-				return "ChangePassword";
-			}
+			if (findByNameAndPassword != null) {
+				if (findByNameAndPassword.getAccountLocked().equals("unlocked")
+						&& findByNameAndPassword.getLoginCount() > 1) {
+					System.out.println("account is unlocked");
+					model.addAttribute("msg", "credentials are matching");
+					model.addAttribute("dto", findByNameAndPassword);
+					return "AdminSuccess";
+				}
+				if (findByNameAndPassword.getLoginCount() <= 1) {
+					System.out.println("welcome to our page please change your password");
+					model.addAttribute("msg1", "Congratulations you have logged in please change your password");
+					return "ChangePassword";
+				}
 
-			return "Admin";
-		}
+				return "Admin";
+			}
+		
 
 		return "Admin";
 	}

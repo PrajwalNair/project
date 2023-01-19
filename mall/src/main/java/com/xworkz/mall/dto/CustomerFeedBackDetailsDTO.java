@@ -22,10 +22,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "feedback_details")
+@Table(name ="feedback_details")
 public class CustomerFeedBackDetailsDTO implements Serializable {
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int feedback_id;
 	@NotNull
 	@NotEmpty

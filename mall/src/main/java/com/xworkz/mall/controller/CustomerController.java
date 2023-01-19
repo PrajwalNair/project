@@ -16,25 +16,39 @@ import com.xworkz.mall.service.CustomerService;
 public class CustomerController {
 	@Autowired
 	private CustomerService service;
-	
+
 	public CustomerController() {
 		System.out.println(getClass().getSimpleName());
 	}
-	
+
 	@PostMapping
-	public String onSend(CustomerPersonalDetailsDTO dto, Model model,CustomerFeedBackDetailsDTO dto2) {
+	public String onSend(CustomerPersonalDetailsDTO dto, Model model, CustomerFeedBackDetailsDTO dto2) {
 		System.out.println("on send method is running ");
-		boolean validateAndSave = service.validateAndSave(dto);
-		if(validateAndSave) {
-			model.addAttribute("message", "Details saved successfully");
-			model.addAttribute("dto", dto);
-			model.addAttribute("dto1", dto2);
-			return "Success";
-			}else {
+		
+		boolean findByEmail = service.findByEmail(dto.getEmail());
+		boolean findByMobileNo = service.findByMobileNo(dto.getMobileNo());
+		if (!findByEmail) {
+			System.out.println(dto.getEmail());
+			model.addAttribute("error", "Email already exists");
+			return "Customer";
+		} else if (!findByMobileNo) {
+			System.out.println(dto.getMobileNo());
+			model.addAttribute("error", "mobile number already exists");
+			return "Customer";
+		} else {
+			dto.setFeedBackDTO(dto2);
+			boolean validateAndSave = service.validateAndSave(dto);
+			if (validateAndSave) {
+				model.addAttribute("message", "Details saved successfully");
+				model.addAttribute("dto", dto);
+				model.addAttribute("dto1", dto2);
+				return "Success";
+			} else {
 				model.addAttribute("error", "Details not saved ");
 				return "Customer";
 			}
-		
+		}
+
 	}
 
 }

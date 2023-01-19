@@ -10,18 +10,33 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous"> 
 <title>Admin-Login</title>
+<link rel="icon" type="image/x-icon" href="https://cdn.imgbin.com/25/14/15/web-design-icon-login-icon-LEcDwkev.jpg">
 <style type="text/css">
 @charset "utf-8"; 
 
 * {
 	margin: 0px;
 	padding: 0px;
-	box-sizing: border-box
+	box-sizing: border-box;
+}
+
+body{
+
+background-color: #D0D3D4;
+background-size:100%;
+text-align: center;
+
+
+ 
 }
 
 .limiter {
 	width: 100%;
-	margin: 0 auto
+	margin: 0 auto;
+	padding-top: 0.09%;
+	padding-right: 30%;
+	
+	
 }
 
 .container-login100 {
@@ -52,11 +67,12 @@
 	height: 100%;
 	top: 0;
 	left: 0;
-	background-color: rgba(0, 0, 0, 0.5)
+	
+	/* background-color: rgba(0, 0, 0, 0.5) */
 }
 
 .login_topimg {
-	border-top-left-radius: 5px;
+	 /* border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	width: 100%;
 	min-height: 185px;
@@ -65,7 +81,8 @@
 		url(https://image.freepik.com/free-vector/cyber-data-security-online-concept-illustration-internet-security-information-privacy-protection_1150-37330.jpg)
 		no-repeat;
 	background-size: auto;
-	background-position: center
+	background-position: center; */ 
+	/* background-color: black; */ 
 }
 
 .login_topimg img {
@@ -86,8 +103,10 @@
 #login .wrap-login100 {
 	background-color: #fff;
 	padding: 20px 45px;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
+	border-top-left-radius:20px;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 20px;
 	width: 100%
 }
 
@@ -416,7 +435,26 @@ input {
 	}
 }
 
-
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height:7%;
+	background-color: #34495E;
+	color: black;
+	text-align: center;
+}
+navbar {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height:7%;
+	background-color: #34495E;
+	color: black;
+	text-align: center;
+}
 </style>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"></script>
@@ -425,20 +463,16 @@ input {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script>
 </head>
 
-<body style="background-color: #DCDCDC;">
+<body >
 
-	 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	 <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #34495E;width: 100%;">
 		<img alt=""
-			src="https://e7.pngegg.com/pngimages/483/254/png-clipart-creative-mall-public-toilet-logo-furniture-free-logo-design-template.png"
-			width="50" height="50"> <a class="navbar-brand" href="#"
-			style="padding-left: 1.8%; font-weight: bolder; font-size: xx-large;; font-variant: small-caps; font-style: italic;">Mall</a>
+			src="https://i0.wp.com/myjamnagar.com/wp-content/uploads/2020/09/shopping-online-e1600266149435.jpg?ssl=1"
+			width="50" height="35"> <a class="navbar-brand" href="#"
+			style="padding-left: 1.8%; font-weight: bolder; font-size: xx-large;">Mall</a>
 
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link"
-					href="index.jsp">Home <span class="sr-only">(current)</span>
-				</a></li>
-			</ul>
+		<div style="padding-left: 83%;" >
+			<a href="index.jsp" style="color: white;font-size: large;">Home</a>
 		</div>
 	</nav> 
 	
@@ -547,17 +581,17 @@ input {
 	<!-- </section> -->
 	<div class="limiter" id="login">
 		<div class="container-login100"
-			style="background-image: url(https://image.freepik.com/free-photo/happy-woman-doing-online-shopping-home_329181-4301.jpg)">
+			>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6"></div>
 					<div class="col-md-5 col-md-offset-1">
-						<div class="login_topimg"></div>
-						<div class="wrap-login100">
+						<div class="login_topimg" ></div>
+						<div class="wrap-login100" style="background-color: #212F3C;color: white;">
 							<form class="login100-form validate-form" action="admin"
-								method="post">
-								<span class="login100-form-title "> Login </span> <span
-									class="login100-form-subtitle m-b-16"> to your account </span>
+								method="post" >
+								<span class="login100-form-title " style="color: white;"> Login </span> <span
+									class="login100-form-subtitle m-b-16" style="color: white;"> to your account </span>
 								<div class="wrap-input100 validate-input m-b-16"
 									data-validate="Valid email is required: ex@abc.xyz">
 									<input class="input100" type="text" name="name"
@@ -590,17 +624,17 @@ input {
 								</div>
 								<div class="flex-sb-m w-full p-b-30">
 									<div class="contact100-form-checkbox">
-										<input class="input-checkbox100" id="ckb1" type="checkbox"
-											name="remember-me"> <label class="label-checkbox100"
-											for="ckb1"> Remember me </label>
+										<input  id="ckb1" type="checkbox"
+											name="remember-me" required	> <label 
+											for="ckb1" style="color: white;font-size: small;" > Remember me </label>
 									</div>
 									<div>
-										<a href="ResetPassword.jsp" class="txt1"> Forgot Password?
+										<a href="ResetPassword.jsp" class="txt1" style="color: red;font-size: small;"> Forgot Password?
 										</a>
 									</div>
 								</div>
 								<div class="container-login100-form-btn p-t-25">
-									<button class="login100-form-btn">Login</button>
+									<button class="login100-form-btn" style="background-color: #27AE60 ;">Login</button>
 								</div>
 								<div>
 							<p class="lead fw-normal mb-0 me-3"
@@ -633,6 +667,12 @@ input {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>  -->
+		<footer>
+		<p style="font-size:small; ;padding-top: 0.7%;color: white;">
+			© Created By : Prajwal Nair &nbsp; <a
+				href="#" style="font-size: small;color: blue;"><u> prajwalnair.xworkz@gmail.com</u></a>
+		</p>
+	</footer>
 
 </body>
 </html>

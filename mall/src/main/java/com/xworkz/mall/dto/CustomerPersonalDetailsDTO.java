@@ -3,18 +3,16 @@ package com.xworkz.mall.dto;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.MapsId;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.transaction.Transactional;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -29,6 +27,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "person_details")
+//@NamedNativeQuery(name = "findByName1",query = "select * from person_details where name=:nm",resultClass = CustomerPersonalDetailsDTO.class)
+@NamedNativeQuery(name = "findByName1", query = "SELECT feedback_details.* \r\n"
+		+ "FROM feedback_details \r\n"
+		+ "left JOIN person_details\r\n"
+		+ "ON feedback_details.feedback_id = person_details.feedback_id\r\n"
+		+ "where person_details.name=:nm",resultClass = CustomerFeedBackDetailsDTO.class)
+@NamedQuery(name = "findByEmail", query = "select alia from CustomerPersonalDetailsDTO alia where alia.email=:em")
+@NamedQuery(name = "findByMobileNo", query = "select alia from CustomerPersonalDetailsDTO alia where alia.mobileNo=:mb")
 public class CustomerPersonalDetailsDTO implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,8 +63,8 @@ public class CustomerPersonalDetailsDTO implements Serializable {
 	@Size(min = 3, max = 40)
 	private String city;
 	private int pincode;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_feedback_id",referencedColumnName = "feedback_id")
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name = "feedback_id")
 	private CustomerFeedBackDetailsDTO feedBackDTO;
 
 	public CustomerPersonalDetailsDTO(@NotNull @NotEmpty @Size(min = 3, max = 25) String name,

@@ -8,14 +8,22 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<title>Reset password</title>
+<title>Reset-password</title>
+<link rel="icon" type="image/x-icon" href="https://www.freeiconspng.com/thumbs/login-icon/login-key-icon-lock-locked-login-15.png">
 <style type="text/css">
 .forgetpassword {
-	padding-left: 30%;
-	padding-top: 2%;
+	padding-left: 40%;
+	padding-top: 10%;
 	padding-right: 40%;
 	padding-bottom: 2%;
 	background-size: 100%;
+}
+
+body {
+	/* background-image: url("https://crypto-risk-metrics.com/static/img/login-light.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%; */
+	background-color: #D0D3D4;
 }
 </style>
 
@@ -33,40 +41,40 @@
 <body>
 
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar-dark "
+		style="background-color: #34495E;">
 		<img alt=""
-			src="https://e7.pngegg.com/pngimages/483/254/png-clipart-creative-mall-public-toilet-logo-furniture-free-logo-design-template.png"
-			width="50" height="50"> <a class="navbar-brand" href="#"
-			style="padding-left: 1.8%; font-weight: bolder; font-size: xx-large;; font-variant: small-caps; font-style: italic;">Mall</a>
+			src="https://i0.wp.com/myjamnagar.com/wp-content/uploads/2020/09/shopping-online-e1600266149435.jpg?ssl=1"
+			width="50" height="35"> <a class="navbar-brand" href="#"
+			style="padding-left: 1.8%; font-weight: bolder; font-size: xx-large;">Mall</a>
 
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link"
-					href="index.jsp">Home <span class="sr-only">(current)</span>
-				</a></li>
-			</ul>
+		<div style="padding-left: 83%;">
+			<a href="index.jsp" style="color: white; font-size: large;">Home</a>
 		</div>
 	</nav>
-	<h1 style="text-align: center;font-size: x-large;font-weight: bolder;color: red;">Reset Password</h1>
+	<!-- <h1
+		style="text-align: center; font-size: x-large; font-weight: bolder; color: red;">Reset
+		Password</h1> -->
 	<p style="color: green;">${msg}</p>
 	<p style="color: green;">${error}</p>
 	<div class="forgetpassword">
 		<form action="reset" method="post">
-<div>
-			<label class="form-label" for="form3Example4" style="font-size:large; font-style: normal;font-weight: normal;">Mall Name</label>
-			<select name="mallName">
-				<option selected>Choose...</option>
-				<option value="LU LU">LU LU</option>
-				<option value="Orion">Orion</option>
-				<option value="Vega City">Vega City</option>
-				<option value="Mantri">Mantri</option>
-				<option value="Central">Central</option>
-				<option value="Urban Oasis">Urban Oasis</option>
-			</select>
-</div>
+			<div>
+				<label class="form-label" for="form3Example4"
+					style="font-size: x-large; font-style: normal; font-weight: bold;">Choose
+					the Mall Name</label>  <select name="mallName">
+					<option selected>Choose...</option>
+					<option value="LU LU">LU LU</option>
+					<option value="Orion">Orion</option>
+					<option value="Vega City">Vega City</option>
+					<option value="Mantri">Mantri</option>
+					<option value="Central">Central</option>
+					<option value="Urban Oasis">Urban Oasis</option>
+				</select>
+			</div>
 
-
-			<button type="submit" class="btn btn-primary">send</button>
+	<br>
+			<button type="submit" class="btn btn-success" style="background-color: #27AE60 ;color: white;">send</button>
 		</form>
 	</div>
 

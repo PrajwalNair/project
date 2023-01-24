@@ -1,7 +1,10 @@
 package com.xworkz.mall.configuration;
 
+import static com.xworkz.mall.logger.Loggers.getLogger;
+
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
@@ -17,9 +20,11 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 @ComponentScan("com.xworkz")
 public class DBConfiguration {
+	
+	private Logger logger = getLogger();
 
 	public DBConfiguration() {
-		System.out.println(getClass().getSimpleName());
+		logger.info(getClass().getSimpleName());
 	}
 	@Bean
 	LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean(DataSource source) {
@@ -39,7 +44,7 @@ public class DBConfiguration {
 		DataSource source = new HikariDataSource(config);
 		try {
 			Connection connection = source.getConnection();
-			System.out.println("Connection" + connection);
+			logger.config("Connection"+ connection);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

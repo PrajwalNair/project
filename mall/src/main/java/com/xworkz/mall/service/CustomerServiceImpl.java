@@ -98,7 +98,7 @@ public class CustomerServiceImpl implements CustomerService {
 			message.setFrom(new InternetAddress(username));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email)); // like
 																							// inzi769@gmail.com
-			message.setSubject("Feedback Confirmation");
+			message.setSubject("Feedback");
 			message.setText(
 					"Thankyou for giving your feedback. have a nice day");
 

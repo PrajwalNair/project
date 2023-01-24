@@ -1,8 +1,11 @@
 package com.xworkz.mall.repository;
 
+import static com.xworkz.mall.logger.Loggers.getLogger;
+
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,21 +22,22 @@ import com.xworkz.mall.dto.AdminDTO;
 public class MallRepositoryImpl implements MallRepository {
 	@Autowired
 	private EntityManagerFactory factory;
+	private Logger logger = getLogger();
 
 	@Override
 	public AdminDTO findByNameAndPassword(String name, String password) {
-		System.out.println("find by name and password method is running in repository");
+		logger.info("find by name and password method is running in repository");
 		EntityManager manager = factory.createEntityManager();
 		try {
 			Query query = manager.createNamedQuery("findByNameAndPassword");
 			query.setParameter("nm", name);
 			query.setParameter("ps", password);
-			System.out.println("------------------");
+			logger.info("------------------");
 			Object singleResult = query.getSingleResult();
 			System.out.println(singleResult);
 			if (singleResult != null) {
 				AdminDTO ref = (AdminDTO) singleResult;
-				System.out.println("result list is present " + ref);
+				logger.info("result list is present " + ref);
 				return ref;
 			} else {
 				System.out.println("result list is not present ");
@@ -60,7 +64,7 @@ public class MallRepositoryImpl implements MallRepository {
 
 			int executeUpdate = query.executeUpdate();
 			transaction.commit();
-			System.out.println("no of wrong attempt is updated :"+executeUpdate);
+			logger.info("no of wrong attempt is updated :"+executeUpdate);
 
 		} catch (PersistenceException e) {
 			transaction.rollback();
@@ -80,10 +84,10 @@ public class MallRepositoryImpl implements MallRepository {
 			Object singleResult = query.getSingleResult();
 			if (singleResult != null) {
 				AdminDTO ref = (AdminDTO) singleResult;
-				System.out.println("result list is present " + ref);
+				logger.info("result list is present " + ref);
 				return ref;
 			} else {
-				System.out.println("result list is null");
+				logger.info("result list is null");
 				return null;
 			}
 		} catch (PersistenceException e) {
@@ -97,7 +101,7 @@ public class MallRepositoryImpl implements MallRepository {
 
 	@Override
 	public AdminDTO updateFirstLoginByName(String name, int loginStatus) {
-		System.out.println("update login status method is running in the repository");
+		logger.info("update login status method is running in the repository");
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		try {
@@ -107,7 +111,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("lg", loginStatus);
 			int executeUpdate = query.executeUpdate();
 			
-			System.out.println("first login is updated :"+executeUpdate);
+			logger.info("first login is updated :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -119,7 +123,7 @@ public class MallRepositoryImpl implements MallRepository {
 
 	@Override
 	public AdminDTO updateAccountLockedByName(String name, String accountLocked) {
-		System.out.println("Account locked method is running in the repository");
+		logger.info("Account locked method is running in the repository");
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		try {
@@ -128,7 +132,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("nm", name);
 			query.setParameter("al", accountLocked);
 			int executeUpdate = query.executeUpdate();	
-			System.out.println("Account locked is updated :"+executeUpdate);
+			logger.info("Account locked is updated :"+executeUpdate);
 			transaction.commit();
 			
 		} catch (PersistenceException e) {
@@ -141,7 +145,7 @@ public class MallRepositoryImpl implements MallRepository {
 
 	@Override
 	public AdminDTO updateGeneratedPasswordByName(String name, String generatedPassword) {
-		System.out.println("update generated password by name method is running in repository");
+		logger.info("update generated password by name method is running in repository");
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		try {
@@ -151,7 +155,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("gpas", generatedPassword);
 			int executeUpdate = query.executeUpdate();
 			transaction.commit();
-			System.out.println("Generated password is updated :"+executeUpdate);
+			logger.info("Generated password is updated :"+executeUpdate);
 
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -163,7 +167,7 @@ public class MallRepositoryImpl implements MallRepository {
 
 	@Override
 	public AdminDTO updatePasswordByGeneratedPassword(String generatedPassword, String password) {
-		System.out.println("update password by generated passwordd method is running");
+		logger.info("update password by generated passwordd method is running");
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		try {
@@ -173,7 +177,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("gs", generatedPassword);
 			int executeUpdate = query.executeUpdate();
 			transaction.commit();
-			System.out.println("Password is updated "+executeUpdate);
+			logger.info("Password is updated "+executeUpdate);
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 			transaction.rollback();
@@ -185,7 +189,7 @@ public class MallRepositoryImpl implements MallRepository {
 
 	@Override
 	public AdminDTO findByMallName(String mallName) {
-		System.out.println("find by mall name method is running");
+		logger.info("find by mall name method is running");
 		EntityManager manager = factory.createEntityManager();
 		try {
 			Query query = manager.createNamedQuery("findByMallName");
@@ -193,10 +197,10 @@ public class MallRepositoryImpl implements MallRepository {
 			Object singleResult = query.getSingleResult();
 			if (singleResult != null) {
 				AdminDTO ref = (AdminDTO) singleResult;
-				System.out.println("result is not null" + ref);
+				logger.info("result is not null" + ref);
 				return ref;
 			} else {
-				System.out.println("result is null");
+				logger.info("result is null");
 				return null;
 			}
 		} catch (PersistenceException e) {
@@ -209,7 +213,7 @@ public class MallRepositoryImpl implements MallRepository {
 
 	@Override
 	public AdminDTO updateGeneratedPasswordByMallName(String mallName, String generatedPassword) {
-		System.out.println("update generated password by mall name");
+		logger.info("update generated password by mall name");
 		EntityManager manager = factory.createEntityManager();
 		EntityTransaction transaction = manager.getTransaction();
 		try {
@@ -218,7 +222,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("mn", mallName);
 			query.setParameter("gp", generatedPassword);
 			int executeUpdate = query.executeUpdate();
-			System.out.println("generated password by mallName :"+executeUpdate);
+			logger.info("generated password by mallName :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -238,7 +242,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("nm", name);
 			query.setParameter("lc", loginCount);
 			int executeUpdate = query.executeUpdate();
-			System.out.println("login count is updated by name :"+executeUpdate);
+			logger.info("login count is updated by name :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -260,7 +264,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("ml", mallName);
 			query.setParameter("ti", time);
 			int executeUpdate = query.executeUpdate();
-			System.out.println("time is updated by mallName :"+executeUpdate);
+			logger.info("time is updated by mallName :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -281,7 +285,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("nm", mallName);
 			query.setParameter("st", status);
 			int executeUpdate = query.executeUpdate();
-			System.out.println("Account unlock is updated by name :"+executeUpdate);
+			logger.info("Account unlock is updated by name :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -302,7 +306,7 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("mn", mallName);
 			query.setParameter("no", noOfAttempts);
 			int executeUpdate = query.executeUpdate();
-			System.out.println("no of wrong attemptsis updated by mallName :"+executeUpdate);
+			logger.info("no of wrong attemptsis updated by mallName :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
@@ -320,10 +324,10 @@ public class MallRepositoryImpl implements MallRepository {
 			Object singleResult = query.getSingleResult();
 			if(singleResult!=null) {
 				AdminDTO ref = (AdminDTO)singleResult;
-				System.out.println("data is present "+singleResult);
+				logger.info("data is present "+ref);
 				return ref;
 			}else {
-				System.out.println("data is not present ");
+				logger.info("data is not present ");
 				return null;
 			}
 		} catch (PersistenceException e) {
@@ -346,13 +350,57 @@ public class MallRepositoryImpl implements MallRepository {
 			query.setParameter("gp", generatedPassword);
 			query.setParameter("gpt", generatedPasswordTime);
 			int executeUpdate = query.executeUpdate();
-			System.out.println("generated password time is updated by generated password :"+executeUpdate);
+			logger.info("generated password time is updated by generated password :"+executeUpdate);
 			transaction.commit();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 			transaction.rollback();
 		}finally {
 			manager.close();
+		}
+		return null;
+	}
+
+	@Override
+	public AdminDTO updateActiveByGeneratedPassword(String GeneratedPassword, int active) {
+		logger.info("update active by name and password method is running");
+		EntityManager manager = factory.createEntityManager();
+		EntityTransaction transaction = manager.getTransaction();
+		try {
+			transaction.begin();
+			Query query = manager.createNamedQuery("updateActiveByGeneratedPassword");
+			query.setParameter("ps", GeneratedPassword);
+			query.setParameter("ac", active);
+			int executeUpdate = query.executeUpdate();
+			logger.info("active is updated :"+executeUpdate);
+			transaction.commit();
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}finally {
+			manager.close();
+		}
+		return null;
+	}
+
+	@Override
+	public AdminDTO findByPassword(String password) {
+		logger.info("find by password method is running in the repository");
+		EntityManager manager = factory.createEntityManager();
+		try {
+			Query query = manager.createNamedQuery("findByPassword");
+			query.setParameter("ps", password);
+			Object singleResult = query.getSingleResult();
+			if(singleResult!=null) {
+				AdminDTO ref = (AdminDTO)singleResult;
+				logger.info("password is not empty in the repository"+ref);
+				return ref;
+			}else {
+				logger.info("password is null in the repository");
+				return null;
+			}
+		} catch (PersistenceException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}

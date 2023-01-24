@@ -1,10 +1,24 @@
 package com.xworkz.mall.configuration;
 
+import java.util.Arrays;
 import java.util.Base64;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class decr {
 
 	public static void main(String[] args) {
+		
+		
+	    String[] words = {"hello", "world", "java", "stream", "API"};
+
+        // Using Stream API
+        List<String> filteredWords = Arrays.stream(words)
+                                            .filter(s -> s.length() > 4)
+                                            .map(String::toUpperCase)
+                                            .collect(Collectors.toList());
+        System.out.println(filteredWords);
+    
 
 //		String ref = "name";
 //		String dec = "name";

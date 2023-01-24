@@ -1,5 +1,9 @@
 package com.xworkz.mall.controller;
 
+import static com.xworkz.mall.logger.Loggers.getLogger;
+
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +20,10 @@ import com.xworkz.mall.service.MallService;
 public class ResetPasswordController {
 	@Autowired
 	private MallService service;
+	private Logger logger = getLogger();
 
 	public ResetPasswordController() {
-		System.out.println(getClass().getSimpleName());
+		logger.info(getClass().getSimpleName());
 	}
 
 	@PostMapping

@@ -26,6 +26,17 @@ body {
 background-color: #D0D3D4;
 
 }
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height:7%;
+	background-color: #34495E;
+	color: black;
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -55,7 +66,12 @@ background-color: #D0D3D4;
 		<a class="btn btn" href="SearchFeedBack.jsp" role="button" style="background-color: #27AE60 ;color: white;">Search FeedBack</a>	
 	</div>
 	
-
+		<footer>
+		<p style="font-size:small; ;padding-top: 0.7%;color: white;">
+			© Created By : Prajwal Nair &nbsp; <a
+				href="#" style="font-size: small;color: blue;"><u> prajwalnair.xworkz@gmail.com</u></a>
+		</p>
+	</footer>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

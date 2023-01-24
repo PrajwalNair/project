@@ -1,5 +1,9 @@
 package com.xworkz.mall.controller;
 
+import static com.xworkz.mall.logger.Loggers.getLogger;
+
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,19 +20,20 @@ import com.xworkz.mall.service.CustomerService;
 public class CustomerController {
 	@Autowired
 	private CustomerService service;
+	private Logger logger = getLogger();
 
 	public CustomerController() {
-		System.out.println(getClass().getSimpleName());
+		logger.info(getClass().getSimpleName());
 	}
 
 	@PostMapping
 	public String onSend(CustomerPersonalDetailsDTO dto, Model model, CustomerFeedBackDetailsDTO dto2) {
-		System.out.println("on send method is running ");
+		logger.info("on send method is running ");
 		
 		boolean findByEmail = service.findByEmail(dto.getEmail());
 		boolean findByMobileNo = service.findByMobileNo(dto.getMobileNo());
 		if (!findByEmail) {
-			System.out.println(dto.getEmail());
+			logger.info(dto.getEmail());
 			model.addAttribute("error", "Email already exists");
 			return "Customer";
 		} else if (!findByMobileNo) {

@@ -23,13 +23,24 @@ padding-left: 2%;
 padding-top: 1%;
 
 }
+
+th {
+	text-align: justify;
+}
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height:7%;
+	background-color: #34495E;
+	color: black;
+	text-align: center;
+}
 </style>
 
-<script type="text/javascript">
 
-
-
-</script>
 </head>
 
 <body>
@@ -51,34 +62,38 @@ padding-top: 1%;
 			class="btn " type="submit" value="search" role="button" style="background-color: #27AE60">
 			</div>
 		<div class="table_modification">
-			<table class=" table-primary " >
-				<thead class="table-danger ">
-					<tr>
-						<th>Id</th>
-						<th>Purpose</th>
-						<th>Ambience</th>
-						<th>Visited Food Court</th>
-						<th>Visited Rest Rooms</th>
-						<th>Parking Experience</th>
-						<th>Total Experience</th>
-						<th>Feedback</th>
-					</tr>
-				</thead>
-				<c:forEach items="${list}" var="dto">
-					<tr>
-						<td>${dto.feedback_id}</td>
-						<td>${dto.purpose}</td>
-						<td>${dto.ambience}</td>
-						<td>${dto.visitedFoodCourt}</td>
-						<td>${dto.visitedRestRooms}</td>
-						<td>${dto.parkingExperience}</td>
-						<td>${dto.totalExperience}</td>
-						<td>${dto.feedBack}</td>
+			<c:if test="${not empty list}">
+    <table class=" table "  >
+        <thead style="background-color: gray;color: white;">
+            <tr>
+                <th>Id</th>
+                <th>Purpose</th>
+                <th>Ambience</th>
+                <th>Visited Food Court</th>
+                <th>Visited Rest Rooms</th>
+                <th>Parking Experience</th>
+                <th>Total Experience</th>
+                <th>Feedback</th>
+            </tr>
+        </thead>
+        <c:forEach items="${list}" var="dto"  >
 
-					</tr>
-				</c:forEach>
-			</table>
+            <tr>
+                <td>${dto.feedback_id}</td>
+                <td>${dto.purpose}</td>
+                <td>${dto.ambience}</td>
+                <td>${dto.visitedFoodCourt}</td>
+                <td>${dto.visitedRestRooms}</td>
+                <td>${dto.parkingExperience}</td>
+                <td>${dto.totalExperience}</td>
+                <td>${dto.feedBack}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</c:if>
 		</div>
+		
+		
 
 		<p class="lead fw-normal mb-0 me-3"
 			style="text-align: center; color: green; font-size: large; font-weight: bold;">${msg}</p>
@@ -86,6 +101,13 @@ padding-top: 1%;
 			style="text-align: center; color: red; font-size: large; font-weight: bold;">${error}</p>
 
 	</form>
+	
+	<footer>
+		<p style="font-size:small; ;padding-top: 0.7%;color: white;">
+			© Created By : Prajwal Nair &nbsp; <a
+				href="#" style="font-size: small;color: blue;"><u> prajwalnair.xworkz@gmail.com</u></a>
+		</p>
+	</footer>
 
 </body>
 </html>

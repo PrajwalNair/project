@@ -36,6 +36,8 @@ import lombok.NoArgsConstructor;
 @NamedQuery(name = "updateNoOfWrongAttemptsByMallName", query = "update AdminDTO alia set alia.noOfWrongAttempts=:no where alia.mallName=:mn")
 @NamedQuery(name = "findByGeneratedPassword", query = "select alia from AdminDTO alia where alia.generatedPassword=:ps")
 @NamedQuery(name = "updateGeneratedPasswordTimeByGeneratedPassword", query = "update AdminDTO alia set alia.generatedPasswordTime=:gpt where alia.generatedPassword=:gp")
+@NamedQuery(name = "updateActiveByGeneratedPassword", query = "update AdminDTO alia set alia.active=:ac where alia.generatedPassword=:ps")
+@NamedQuery(name = "findByPassword", query = "select alia from AdminDTO alia where alia.password=:ps")
 public class AdminDTO extends AbstractDTO implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +45,7 @@ public class AdminDTO extends AbstractDTO implements Serializable {
 	private String name;
 	private String password;
 	private String mallName;
-	private boolean active;
+	private int active;
 	private String accountLocked;
 	private int noOfWrongAttempts;
 	private String mallEmail;
@@ -54,7 +56,7 @@ public class AdminDTO extends AbstractDTO implements Serializable {
 	private LocalTime generatedPasswordTime;
 
 	public AdminDTO(String createdBy, LocalDate createdDate, String updatedBy, LocalDate updatedDate, String name,
-			String password, String mallName, boolean active, String accountLocked, int noOfWrongAttempts,
+			String password, String mallName, int active, String accountLocked, int noOfWrongAttempts,
 			String mallEmail, int firstLogin, String generatedPassword, int loginCount, LocalTime time, LocalTime generatedPasswordTime) {
 		super(createdBy, createdDate, updatedBy, updatedDate);
 		this.name = name;

@@ -1,9 +1,12 @@
 package com.xworkz.mall.service;
 
+import static com.xworkz.mall.logger.Loggers.getLogger;
+
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.Properties;
 import java.util.Random;
+import java.util.logging.Logger;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -24,33 +27,35 @@ import com.xworkz.mall.repository.MallRepository;
 public class MallServiceImpl implements MallService {
 	@Autowired
 	private MallRepository repository;
+	private Logger logger = getLogger();
+
 	
-	int countFirstLogin = 0;
 
 	@Override
 	public AdminDTO findByNameAndPassword(String name, String password) {
-		System.out.println("find by name and password method is running in service");
+		logger.info("find by name and password method is running in service");
 		AdminDTO findByNameAndPassword = repository.findByNameAndPassword(name, encryption(password, 8));
-		
+
 		if (findByNameAndPassword != null) {
 			int loginCount = findByNameAndPassword.getLoginCount();
 			loginCount++;
 			findByNameAndPassword.setLoginCount(loginCount);
 			repository.updateLoginCountByName(name, findByNameAndPassword.getLoginCount());
 			if (findByNameAndPassword.getFirstLogin() < 1) {
+				int countFirstLogin = findByNameAndPassword.getFirstLogin();
 				countFirstLogin++;
 				System.out.println(countFirstLogin);
 				findByNameAndPassword.setFirstLogin(countFirstLogin);
 				repository.updateFirstLoginByName(name, findByNameAndPassword.getFirstLogin());
-				System.out.println(findByNameAndPassword + " ---------------");
-				System.out.println("entering first login");
+				logger.info(findByNameAndPassword + " ---------------");
+				logger.info("entering first login");
 				findByNameAndPassword.setGeneratedPassword(generatedPassword(8));
-				System.out.println("====================" + generatedPassword(8));
+				logger.info("====================" + generatedPassword(8));
 				repository.updateGeneratedPasswordByName(name, findByNameAndPassword.getGeneratedPassword());
 				String mallEmail = findByNameAndPassword.getMallEmail();
 				String generatedPassword = findByNameAndPassword.getGeneratedPassword();
 				sendMail(mallEmail, generatedPassword);
-				System.out.println("mail is sent for first time password");
+				logger.info("mail is sent for first time password");
 				return findByNameAndPassword;
 			}
 			System.out.println("login is successfull");
@@ -60,16 +65,16 @@ public class MallServiceImpl implements MallService {
 			AdminDTO findByName = repository.findByName(name);
 			if (findByName != null) {
 				count1 = findByName.getNoOfWrongAttempts();
-				System.out.println("checking the count before ++ " + count1);
+				logger.info("checking the count before ++ " + count1);
 			}
 			if (count1 < 3) {
 				count1++;
-				System.out.println("checking the count after ++" + count1);
-				System.out.println("update the wrong attempts");
+				logger.info("checking the count after ++" + count1);
+				logger.info("update the wrong attempts");
 				repository.updateNoOfWrongAttemptsByName(name, count1);
 			}
 			if (count1 >= 3) {
-				System.out.println("if count is greater than 3 than locking the account ");
+				logger.info("if count is greater than 3 than locking the account ");
 				findByName.setAccountLocked("locked");
 				repository.updateAccountLockedByName(name, findByName.getAccountLocked());
 			}
@@ -103,14 +108,14 @@ public class MallServiceImpl implements MallService {
 			message.setFrom(new InternetAddress(username));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email)); // like
 																							// inzi769@gmail.com
-			message.setSubject("Reset Password");
+			message.setSubject("Change Password");
 			message.setText(
 					"Hi this is the generated password for first time login please change the password after one time login"
 							+ "\n" + passwordGenerated);
 
 			Transport.send(message);
 
-			System.out.println("Done");
+			logger.info("Done");
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
@@ -137,7 +142,7 @@ public class MallServiceImpl implements MallService {
 			password[i] = combinedChars.charAt(random.nextInt(combinedChars.length()));
 
 		}
-		System.out.println("................." + password);
+		logger.info("................." + password);
 		String string = password.toString();
 
 		return string;
@@ -152,7 +157,7 @@ public class MallServiceImpl implements MallService {
 	@Override
 	public AdminDTO updatePasswordByGeneratedPassword(String generatedPassword, String password) {
 		AdminDTO findByGeneratedPassword = repository.findByGeneratedPassword(generatedPassword);
-		if (findByGeneratedPassword.getLoginCount() > 1) {
+		if (findByGeneratedPassword.getActive() == 1) {
 			LocalTime time = findByGeneratedPassword.getTime();
 			LocalTime now = LocalTime.now();
 			findByGeneratedPassword.setGeneratedPasswordTime(now);
@@ -179,13 +184,16 @@ public class MallServiceImpl implements MallService {
 			}
 
 		} else {
-			if (findByGeneratedPassword.getLoginCount() <= 1) {
+			if (findByGeneratedPassword.getActive()==0) {
 				findByGeneratedPassword.setAccountLocked("unlocked");
 				findByGeneratedPassword.setNoOfWrongAttempts(0);
+				findByGeneratedPassword.setActive(1);
 				repository.updateNoOfWrongAttemptsByMallName(findByGeneratedPassword.getMallName(),
 						findByGeneratedPassword.getNoOfWrongAttempts());
 				repository.updateAcountUnlockByName(findByGeneratedPassword.getMallName(),
 						findByGeneratedPassword.getAccountLocked());
+				repository.updateActiveByGeneratedPassword(findByGeneratedPassword.getGeneratedPassword(),
+						findByGeneratedPassword.getActive());
 				return repository.updatePasswordByGeneratedPassword(generatedPassword, encryption(password, 8));
 			}
 		}
@@ -232,6 +240,26 @@ public class MallServiceImpl implements MallService {
 	public AdminDTO updateAcountUnlockByName(String name, String status) {
 		// TODO Auto-generated method stub
 		return repository.updateAccountLockedByName(name, status);
+	}
+
+	@Override
+	public AdminDTO updateActiveByGeneratedPassword(String generatedPassword, int active) {
+		System.out.println("update active method is running in the service method");
+
+		return repository.updateActiveByGeneratedPassword(generatedPassword, active);
+
+	}
+
+	@Override
+	public AdminDTO findByGeneratedPassword(String password) {
+		System.out.println("Find by generated password method is running in service method");
+		return repository.findByGeneratedPassword(password);
+	}
+
+	@Override
+	public AdminDTO findByPassword(String password) {
+		System.out.println("find by password method is running in service");
+		return repository.findByPassword(password);
 	}
 
 //	public static String encrypt(String password) {

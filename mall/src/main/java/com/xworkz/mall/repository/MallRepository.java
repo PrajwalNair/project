@@ -38,5 +38,11 @@ public interface MallRepository {
 	AdminDTO findByGeneratedPassword(String password);
 	
 	AdminDTO updateGeneratedPasswordTimeByGeneratedPassword(String generatedPassword, LocalTime generatedPasswordTime);
+	
+	AdminDTO updateActiveByGeneratedPassword(String generatedPassword,int active);
+	
+	AdminDTO findByPassword(String password);
+	
+	
 
 }

@@ -1,6 +1,9 @@
 package com.xworkz.mall.repository;
 
+import static com.xworkz.mall.logger.Loggers.getLogger;
+
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,17 +11,16 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.xworkz.mall.dto.CustomerFeedBackDetailsDTO;
 import com.xworkz.mall.dto.CustomerPersonalDetailsDTO;
 
 @Repository
 public class CustomerRepositoryImpl implements CustomerRepository {
 	@Autowired
 	private EntityManagerFactory factory;
+	private Logger logger = getLogger();
 
 	@Override
 	public boolean save(CustomerPersonalDetailsDTO dto) {
@@ -49,10 +51,10 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 			List resultList = query.getResultList();
 			if(resultList!=null) {
 				
-				System.out.println("result is not empty"+resultList);
+				logger.info("result is not empty"+resultList);
 				return resultList;
 			}else {
-				System.out.println("data is empty" + resultList);
+				logger.info("data is empty" + resultList);
 				return null;
 			}
 		} catch (PersistenceException e) {

@@ -1,6 +1,9 @@
 package com.xworkz.mall.controller;
 
+import static com.xworkz.mall.logger.Loggers.getLogger;
+
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,19 +21,21 @@ public class SearchFeedBackController {
 	@Autowired
 	private CustomerService service;
 	
+	private Logger logger = getLogger();
+	
 	public SearchFeedBackController() {
-		System.out.println(getClass().getSimpleName());
+		logger.info(getClass().getSimpleName());
 	}
 	
 	@PostMapping
 	public String onSearch(@RequestParam String name, Model model) {
 		List<CustomerPersonalDetailsDTO> findByName = service.findByName(name);
 		
-		if(findByName==null) {
+		if(findByName==null || findByName.isEmpty()) {
 			model.addAttribute("error", "No Result Found");
 			return "SearchFeedBack";
 		}else {
-			model.addAttribute("msg", "results");
+			model.addAttribute("msg", "Results");
 			model.addAttribute("list", findByName);
 			return "SearchFeedBack";
 		}

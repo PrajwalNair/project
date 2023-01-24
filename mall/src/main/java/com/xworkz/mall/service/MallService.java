@@ -24,5 +24,10 @@ public interface MallService {
 	
 	AdminDTO updateAcountUnlockByName(String name,String status);
 	
+	AdminDTO updateActiveByGeneratedPassword(String generatedPassword,int active);
+	
+	AdminDTO findByGeneratedPassword(String password);
+	
+	AdminDTO findByPassword(String password);
 
 }
